@@ -1,0 +1,24 @@
+# dbt specific
+dbt_analytics/logs/
+dbt_analytics/target/
+dbt_analytics/dbt_packages/
+dbt_analytics/profiles.yml
+dbt_analytics/.user.yml
+
+# Python/Lambda specific
+**/__pycache__/
+**/*.zip
+venv/
+.env
+
+# Terraform specific
+**/.terraform/
+*.tfstate
+*.tfstate.backup
+
+src/python/
+
+logs/
+.user.yml
+*.csv
+.terraform.lock.hcl

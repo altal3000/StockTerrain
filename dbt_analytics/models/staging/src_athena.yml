@@ -1,0 +1,8 @@
+version: 2
+
+sources:
+  - name: raw_stock_data
+    database: awsdatacatalog
+    schema: stockterrain_db
+    tables:
+      - name: raw
