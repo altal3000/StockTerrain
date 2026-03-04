@@ -2,7 +2,6 @@
 dbt_analytics/logs/
 dbt_analytics/target/
 dbt_analytics/dbt_packages/
-dbt_analytics/profiles.yml
 dbt_analytics/.user.yml
 
 # Python/Lambda specific
