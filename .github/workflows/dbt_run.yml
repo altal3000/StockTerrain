@@ -1,0 +1,36 @@
+name: dbt_run
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+
+jobs:
+  dbt-run:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout branch
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - name: Install dependencies
+        run: |
+          pip install dbt-athena-community
+
+      - name: Run dbt
+        env:
+          AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+          AWS_REGION: ${{ secrets.AWS_REGION }}
+          ATHENA_S3_STAGING_DIR: ${{ secrets.ATHENA_S3_STAGING_DIR }}
+          ATHENA_S3_DATA_DIR: ${{ secrets.ATHENA_S3_DATA_DIR }}
+        run: |
+          cd dbt_analytics
+          dbt deps --profiles-dir .
+          dbt run --profiles-dir .
