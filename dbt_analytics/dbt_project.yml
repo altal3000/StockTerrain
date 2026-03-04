@@ -1,4 +1,3 @@
-
 # Name the project
 name: 'dbt_analytics'
 version: '1.0.0'
@@ -18,9 +17,7 @@ clean-targets:
   - "target"
   - "dbt_packages"
 
-
 # Configuring models
 models:
   dbt_analytics:
-
-    
+    +materialized: table
