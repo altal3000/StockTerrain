@@ -32,7 +32,7 @@ resource "aws_lambda_function" "market_scraper" {
 # 4. Create the schedule (Runs every day at 00:05 UTC)
 resource "aws_cloudwatch_event_rule" "daily_trigger" {
   name                = "market_data_daily_sync"
-  schedule_expression = "cron(0 4 * * ? *)"
+  schedule_expression = "cron(0 8 * * ? *)"
 }
 
 # 5. Link the schedule to your Lambda
