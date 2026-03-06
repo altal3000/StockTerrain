@@ -111,3 +111,77 @@ resource "aws_iam_role_policy" "athena_dbt_permissions" {
     ]
   })
 }
+
+# --- 4. STEP FUNCTION & EVENTBRIDGE ORCHESTRATION ---
+
+# Role for the Step Function
+resource "aws_iam_role" "sfn_role" {
+  name = "dbt-sfn-role"
+  assume_role_policy = jsonencode({
+    Version = "2012-10-17"
+    Statement = [{
+      Action = "sts:AssumeRole"
+      Effect = "Allow"
+      Principal = { Service = "states.amazonaws.com" }
+    }]
+  })
+}
+
+# Unified policy for Step Function to talk to EventBridge
+resource "aws_iam_role_policy" "sfn_eventbridge_policy" {
+  name = "sfn-trigger-eventbridge-policy"
+  role = aws_iam_role.sfn_role.id 
+  policy = jsonencode({
+    Version = "2012-10-17"
+    Statement = [{
+      Action   = "events:PutEvents"
+      Effect   = "Allow"
+      Resource = "arn:aws:events:eu-central-1:${data.aws_caller_identity.current.account_id}:event-bus/default"
+    }]
+  })
+}
+
+# Role for EventBridge delivery (S3 -> SFN and SFN -> API)
+resource "aws_iam_role" "eventbridge_role" {
+  name = "eventbridge-api-role"
+  assume_role_policy = jsonencode({
+    Version = "2012-10-17"
+    Statement = [{
+      Action = "sts:AssumeRole"
+      Effect = "Allow"
+      Principal = { Service = "events.amazonaws.com" }
+    }]
+  })
+}
+
+resource "aws_iam_role_policy" "eventbridge_policy" {
+  name = "eventbridge-api-policy"
+  role = aws_iam_role.eventbridge_role.id
+  policy = jsonencode({
+    Version = "2012-10-17"
+    Statement = [
+      {
+        Action   = "events:InvokeApiDestination"
+        Effect   = "Allow"
+        Resource = aws_cloudwatch_event_api_destination.github_api.arn
+      },
+      {
+        Action   = "secretsmanager:GetSecretValue"
+        Effect   = "Allow"
+        Resource = data.aws_secretsmanager_secret.github_token.arn
+      },
+      {
+        Action   = "events:RetrieveConnectionCredentials"
+        Effect   = "Allow"
+        Resource = aws_cloudwatch_event_connection.github_conn.arn
+      },
+      {
+        Action   = "states:StartExecution"
+        Effect   = "Allow"
+        Resource = aws_sfn_state_machine.dbt_trigger.arn
+      }
+    ]
+  })
+}
+
+data "aws_caller_identity" "current" {}

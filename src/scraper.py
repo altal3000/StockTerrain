@@ -20,8 +20,6 @@ def sync_data():
     yesterday_ts = pd.Timestamp(yesterday_date)
     
     # 3. FORCE the row to exist for yesterday
-    # If yesterday was a weekend, reindex creates the row with NaN for stocks
-    # If it was a crypto day, it preserves the crypto numbers
     df_yesterday = df.reindex([yesterday_ts])
 
     # 4. Prepare file metadata
