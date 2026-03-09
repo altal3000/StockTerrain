@@ -3,7 +3,7 @@ import boto3
 import pandas as pd
 from datetime import datetime, timedelta
 
-# Your indices map
+# Indices map
 INDICES = {
     '^GSPC': 'S&P_500', '^NDX': 'Nasdaq_100', '^FTSE': 'FTSE_100',
     'BTC-USD': 'Bitcoin', 'ETH-USD': 'Ethereum', 'SOL-USD': 'Solana',
@@ -11,15 +11,15 @@ INDICES = {
 }
 
 def sync_data():
-    # 1. Fetch recent history (5d ensures we have context for the reindex)
+    # 1. Fetch recent history (5d)
     data = yf.download(list(INDICES.keys()), period="5d", interval="1d")
     df = data['Close']
     
-    # 2. Target "Yesterday" (The full day that just finished)
+    # 2. Target the last full day
     yesterday_date = (datetime.now() - timedelta(days=1)).date()
     yesterday_ts = pd.Timestamp(yesterday_date)
     
-    # 3. FORCE the row to exist for yesterday
+    # 3. Force the row to exist for yesterday
     df_yesterday = df.reindex([yesterday_ts])
 
     # 4. Prepare file metadata

@@ -1,5 +1,5 @@
 with source as (
-    -- Use the tickers identified in your staging file
+    -- Use the tickers identified in the staging file
     select distinct ticker from {{ ref('fct_market_trends') }}
 ),
 

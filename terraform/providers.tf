@@ -1,5 +1,4 @@
 terraform {
-  # Ensures you use a stable Terraform version
   required_version = "~> 1.7" 
 
   required_providers {
@@ -13,8 +12,7 @@ terraform {
 provider "aws" {
   region = "eu-central-1"
   
-  # Add default tags to automatically 
-  # label every resource created by this project.
+  # Add default tags and label every resource
   default_tags {
     tags = {
       Project   = "StockTerrain"

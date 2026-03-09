@@ -1,11 +1,11 @@
-# 1. Package your scraper.py into a zip automatically
+# 1. Package scraper.py into a zip automatically
 data "archive_file" "lambda_zip" {
   type        = "zip"
   source_file = "${path.module}/../src/scraper.py" # Adjusted path
   output_path = "${path.module}/scraper_code.zip"
 }
 
-# 2. Define the yfinance Layer
+# 2. Define the yfinance layer
 resource "aws_lambda_layer_version" "yfinance" {
   filename            = "${path.module}/../src/yfinance_layer.zip" # Adjusted path
   layer_name          = "yfinance_lib"
@@ -35,14 +35,14 @@ resource "aws_cloudwatch_event_rule" "daily_trigger" {
   schedule_expression = "cron(0 8 * * ? *)"
 }
 
-# 5. Link the schedule to your Lambda
+# 5. Link the schedule to the Lambda
 resource "aws_cloudwatch_event_target" "trigger_target" {
   rule      = aws_cloudwatch_event_rule.daily_trigger.name
   target_id = "daily_market_scraper"
   arn       = aws_lambda_function.market_scraper.arn
 }
 
-# 6. Give EventBridge permission to run your Lambda
+# 6. Give EventBridge permission to run Lambda
 resource "aws_lambda_permission" "allow_eventbridge" {
   action        = "lambda:InvokeFunction"
   function_name = aws_lambda_function.market_scraper.function_name

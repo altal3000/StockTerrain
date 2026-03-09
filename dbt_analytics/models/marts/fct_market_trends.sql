@@ -2,7 +2,7 @@ with base as (
     select * from {{ ref('stg_stock_prices') }}
 ),
 
--- Step 1: Unpivot columns into rows
+-- Unpivot columns into rows
 unpivoted as (
     select observation_date, 'BTC' as ticker, btc_usd as price from base union all
     select observation_date, 'ETH', eth_usd from base union all
@@ -15,7 +15,7 @@ unpivoted as (
     select observation_date, 'Nasdaq 100', nasdaq_100 from base
 ),
 
--- Step 2: Single calculation logic
+-- Single calculation
 final_metrics as (
     select
         observation_date,

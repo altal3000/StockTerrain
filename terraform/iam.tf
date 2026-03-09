@@ -1,4 +1,4 @@
-# --- 1. LAMBDA ROLE ---
+# 1. LAMBDA ROLE
 resource "aws_iam_role" "lambda_scraper_role" {
   name = "market_scraper_lambda_role_v2"
   assume_role_policy = jsonencode({
@@ -27,7 +27,7 @@ resource "aws_iam_role_policy" "lambda_s3_write" {
   })
 }
 
-# --- 2. GLUE ROLE ---
+# 2. GLUE ROLE
 resource "aws_iam_role" "glue_crawler_role" {
   name = "market_crawler_glue_role"
   assume_role_policy = jsonencode({
@@ -56,7 +56,7 @@ resource "aws_iam_role_policy" "glue_s3_read" {
   })
 }
 
-# --- 3. ATHENA/DBT ROLE ---
+# 3. ATHENA/DBT ROLE
 resource "aws_iam_role" "athena_dbt_role" {
   name = "market_analyst_athena_role"
 
@@ -112,7 +112,7 @@ resource "aws_iam_role_policy" "athena_dbt_permissions" {
   })
 }
 
-# --- 4. STEP FUNCTION & EVENTBRIDGE ORCHESTRATION ---
+# 4. STEP FUNCTION & EVENTBRIDGE ORCHESTRATION
 
 # Role for the Step Function
 resource "aws_iam_role" "sfn_role" {

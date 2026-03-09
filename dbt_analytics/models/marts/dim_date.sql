@@ -3,9 +3,9 @@ with date_series as (
         date_add('day', seq - 1, date '2024-01-01') as observation_date
     from (
         select row_number() over () as seq 
-        from {{ ref('fct_market_trends') }} -- Generates enough rows
+        from {{ ref('fct_market_trends') }}
     )
-    where seq <= 800 -- Enough to cover your 734 rows + future buffer
+    where seq <= 800
 )
 
 select
