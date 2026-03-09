@@ -24,7 +24,7 @@ final_metrics as (
         (price - lag(price, 1) over (partition by ticker order by observation_date)) / nullif(lag(price, 1) over (partition by ticker order by observation_date), 0) as daily_change,
         (price - lag(price, 30) over (partition by ticker order by observation_date)) / nullif(lag(price, 30) over (partition by ticker order by observation_date), 0) as mom,
         (price - lag(price, 365) over (partition by ticker order by observation_date)) / nullif(lag(price, 365) over (partition by ticker order by observation_date), 0) as yoy,
-        stddev_samp(price) over (partition by ticker order by observation_date rows between 29 preceding and current row) as vol_30d,
+        stddev_samp((price / lag(price) over (partition by ticker order by observation_date) - 1)) over (partition by ticker order by observation_date rows between 29 preceding and current row) as vol_30d,
         avg(price) over (partition by ticker order by observation_date rows between 49 preceding and current row) as mavg_50,
         avg(price) over (partition by ticker order by observation_date rows between 199 preceding and current row) as mavg_200
     from unpivoted
