@@ -10,5 +10,5 @@ Data transformations and financial indicators are built with dbt and executed th
 ![Architecture Diagram](images/StockTerrain-diagram.png)
 
 ## Preset Dashboards
-![Dashboard Main Page](images/StockTerrain-Dashboard-Detail.png)  
-![Dashboard Detail Page](images/StockTerrain-Dashboard-Main.png)
+![Dashboard Main Page](images/StockTerrain-Dashboard-Main.png)  
+![Dashboard Detail Page](images/StockTerrain-Dashboard-Detail.png)
