@@ -12,3 +12,16 @@ Data transformations and financial indicators are built with dbt and executed th
 ## Preset Dashboards
 ![Dashboard Main Page](images/StockTerrain-Dashboard-Main.png)  
 ![Dashboard Detail Page](images/StockTerrain-Dashboard-Detail.png)
+
+## Tools and Technologies
+- **AWS**: Lambda, S3, Glue, Athena, Step Functions  
+- **Terraform**: Infrastructure as code for AWS resources  
+- **dbt**: Data transformations and modeling  
+- **GitHub Actions**: CI/CD for dbt runs  
+- **Python**: Data ingestion via yfinance  
+- **Preset (Apache Superset)**: Interactive dashboards and visualization
+
+
+## Author
+Aleksej Talstou
+![LinkedIn](https://www.linkedin.com/in/aliaxey-talstou/)
