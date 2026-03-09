@@ -6,6 +6,6 @@ This project implements an end-to-end data pipeline for market analytics using a
 
 Data transformations and financial indicators are built with dbt and executed through GitHub Actions, while AWS Step Functions orchestrate the workflow. The processed dataset powers interactive dashboards in Preset (Apache Superset), providing insights into price trends, returns, volatility, and moving averages across cryptocurrencies, commodities, and major stock indices.
 
-![Architecture Diagram](images/architecture.png)  
-![Dashboard Main Page](images/dashboard_main.png)  
-![Dashboard Detail Page](images/dashboard_btc.png)
+![Architecture Diagram](images/StockTerrain-diagram.png)  
+![Dashboard Main Page](StockTerrain-Dashboard-Detail)  
+![Dashboard Detail Page](StockTerrain-Dashboard-Main)
