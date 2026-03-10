@@ -32,11 +32,11 @@ returns as (
         (price - lag(price) over (partition by ticker order by observation_date))
         / nullif(lag(price) over (partition by ticker order by observation_date),0) as daily_change,
 
-        (price - lag(price,30) over (partition by ticker order by observation_date))
-        / nullif(lag(price,30) over (partition by ticker order by observation_date),0) as mom,
+        (price - lag(price,21) over (partition by ticker order by observation_date))
+        / nullif(lag(price,21) over (partition by ticker order by observation_date),0) as mom,
 
-        (price - lag(price,365) over (partition by ticker order by observation_date))
-        / nullif(lag(price,365) over (partition by ticker order by observation_date),0) as yoy,
+        (price - lag(price,252) over (partition by ticker order by observation_date))
+        / nullif(lag(price,252) over (partition by ticker order by observation_date),0) as yoy,
 
         avg(price) over (
             partition by ticker
