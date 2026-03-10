@@ -20,4 +20,4 @@ src/python/
 logs/
 .user.yml
 *.csv
-.terraform.lock.hcl
+.terraform.lock.hcl.DS_Store

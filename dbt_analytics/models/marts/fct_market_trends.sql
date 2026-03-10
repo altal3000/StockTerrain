@@ -15,22 +15,46 @@ unpivoted as (
     select observation_date, 'Nasdaq 100', nasdaq_100 from base
 ),
 
+-- Remove weekend NULL rows for non-crypto
+filtered as (
+    select *
+    from unpivoted
+    where price is not null
+       or ticker in ('BTC','ETH','Solana')
+),
+
 -- Precompute daily returns
 returns as (
     select
         observation_date,
         ticker,
         price,
-        (price - lag(price, 1) over (partition by ticker order by observation_date)) / nullif(lag(price, 1) over (partition by ticker order by observation_date), 0) as daily_change,
-        (price - lag(price, 30) over (partition by ticker order by observation_date)) / nullif(lag(price, 30) over (partition by ticker order by observation_date), 0) as mom,
-        (price - lag(price, 365) over (partition by ticker order by observation_date)) / nullif(lag(price, 365) over (partition by ticker order by observation_date), 0) as yoy,
-        avg(price) over (partition by ticker order by observation_date rows between 49 preceding and current row) as mavg_50,
-        avg(price) over (partition by ticker order by observation_date rows between 199 preceding and current row) as mavg_200,
+        (price - lag(price) over (partition by ticker order by observation_date))
+        / nullif(lag(price) over (partition by ticker order by observation_date),0) as daily_change,
+
+        (price - lag(price,30) over (partition by ticker order by observation_date))
+        / nullif(lag(price,30) over (partition by ticker order by observation_date),0) as mom,
+
+        (price - lag(price,365) over (partition by ticker order by observation_date))
+        / nullif(lag(price,365) over (partition by ticker order by observation_date),0) as yoy,
+
+        avg(price) over (
+            partition by ticker
+            order by observation_date
+            rows between 49 preceding and current row
+        ) as mavg_50,
+
+        avg(price) over (
+            partition by ticker
+            order by observation_date
+            rows between 199 preceding and current row
+        ) as mavg_200,
+
         price / lag(price) over (partition by ticker order by observation_date) - 1 as daily_return
-    from unpivoted
+    from filtered
 ),
 
--- Calculate 30-day volatility on daily returns
+-- Calculate 30-day volatility
 final_metrics as (
     select
         observation_date,
@@ -39,7 +63,11 @@ final_metrics as (
         daily_change,
         mom,
         yoy,
-        stddev_samp(daily_return) over (partition by ticker order by observation_date rows between 29 preceding and current row) as vol_30d,
+        stddev_samp(daily_return) over (
+            partition by ticker
+            order by observation_date
+            rows between 29 preceding and current row
+        ) as vol_30d,
         mavg_50,
         mavg_200
     from returns
