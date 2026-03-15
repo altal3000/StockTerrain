@@ -21,3 +21,4 @@ logs/
 .user.yml
 *.csv
 .terraform.lock.hcl.DS_Store
+.DS_Store

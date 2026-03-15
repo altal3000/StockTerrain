@@ -5,7 +5,7 @@ with date_series as (
         select row_number() over () as seq 
         from {{ ref('fct_market_trends') }}
     )
-    where seq <= 800
+    where seq <= 1500
 )
 
 select
