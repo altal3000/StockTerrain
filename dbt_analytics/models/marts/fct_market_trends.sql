@@ -71,6 +71,13 @@ final_metrics as (
         mavg_50,
         mavg_200
     from returns
+),
+-- Add is_latest
+final as (
+    select
+        *,
+        observation_date = max(observation_date) over (partition by ticker) as is_latest
+    from final_metrics
 )
 
-select * from final_metrics
+select * from final
