@@ -72,11 +72,12 @@ final_metrics as (
         mavg_200
     from returns
 ),
--- Add is_latest
+-- Add is_latest, is_previous
 final as (
     select
         *,
-        observation_date = max(observation_date) over (partition by ticker) as is_latest
+        observation_date = max(observation_date) over (partition by ticker) as is_latest,
+        row_number() over (partition by ticker order by observation_date desc) = 2 as is_previous
     from final_metrics
 )
 
