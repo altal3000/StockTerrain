@@ -1,3 +1,4 @@
+# This file was automatically generated
 name: stockterrain
 type: athena
 options:
@@ -5,6 +6,3 @@ options:
   database: analytics
   outputBucket: stockterrain-datalake-2101b815/athena_results
   testTableName: fct_market_trends
-  accessKeyId: "{{EVIDENCE_AWS_ACCESS_KEY_ID}}"
-  secretAccessKey: "{{EVIDENCE_AWS_SECRET_ACCESS_KEY}}"
-  region: "{{EVIDENCE_AWS_REGION}}"
