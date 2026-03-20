@@ -2,6 +2,7 @@
 name: stockterrain
 type: athena
 options:
+  region: eu-central-1
   catalog: AWSDataCatalog
   database: analytics
   outputBucket: stockterrain-datalake-2101b815/athena_results
