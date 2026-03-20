@@ -10,6 +10,16 @@ Data transformations and financial metrics are built with dbt and executed via G
 ![Architecture Diagram](images/StockTerrain-diagram.png)  
 *End-to-end pipeline from data ingestion to dashboards.*
 
+## Evidence Dashboard
+Interactive public dashboard built with Evidence.dev, deployed on Netlify.  
+🔗 **[stockterrain.netlify.app](https://stockterrain.netlify.app)**
+
+![Evidence Main Dashboard](images/StockTerrain-Evidence-Main.png)
+*Main dashboard showing overview of all assets.*
+
+![Evidence Detail Dashboard](images/StockTerrain-Evidence-Detail.png)
+*Detail view for Bitcoin with trends and metrics.*
+
 ## Preset Dashboards
 ![Dashboard Main Page](images/StockTerrain-Dashboard-Main.png)  
 *Main dashboard showing overview of all assets.*
@@ -27,7 +37,9 @@ Data transformations and financial metrics are built with dbt and executed via G
 - **Terraform**: Infrastructure as code for AWS resources  
 - **dbt**: Data transformations and modeling  
 - **GitHub Actions**: CI/CD for dbt runs  
-- **Python**: Data ingestion via yfinance  
+- **Python**: Data ingestion via yfinance
+- **Evidence.dev**: Public-facing analytics app with SQL-driven markdown pages  
+- **Netlify**: Static site hosting and deployment for the Evidence dashboard  
 - **Preset (Apache Superset)**: Interactive dashboards and visualization
 
 ## Author
