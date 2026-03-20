@@ -1,5 +1,5 @@
 ---
-title: Silver
+title: StockTerrain
 sidebar: never
 hide_toc: true
 hide_breadcrumbs: true
