@@ -1,0 +1,8 @@
+# This file was automatically generated
+name: stockterrain
+type: athena
+options:
+  catalog: AWSDataCatalog
+  database: analytics
+  outputBucket: stockterrain-datalake-2101b815/athena_results
+  testTableName: fct_market_trends
