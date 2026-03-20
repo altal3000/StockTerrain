@@ -35,3 +35,7 @@ jobs:
           cd dbt_analytics
           dbt deps --profiles-dir .
           dbt run --profiles-dir .
+      
+      - name: Trigger Netlify deploy
+        run: |
+          curl -X POST -d {} ${{ secrets.NETLIFY_BUILD_HOOK }}
