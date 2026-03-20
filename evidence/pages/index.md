@@ -42,7 +42,7 @@ order by ticker, observation_date
     {row.daily_change >= 0 ? '▲' : '▼'} {(row.daily_change * 100).toFixed(2)}% DoD
   </div>
   <div style="margin-top: 16px;">
-    <AreaChart data={sparkline_data.filter(d => d.ticker === 'BTC')} x=observation_date y=price lineColor=#3b82f6 fillColor=#bfdbfe xAxisLabels=false yAxisLabels=false gridlines=false yGridlines=false height=50 xFmt="dd/mm/yyyy" yScale=true/>
+    <AreaChart data={sparkline_data.filter(d => d.ticker === 'BTC')} x=observation_date y=price lineColor=#3b82f6 fillColor=#bfdbfe xAxisLabels=false yAxisLabels=false yGridlines=false chartAreaHeight=150 xFmt="dd/mm/yyyy" yScale=true/>
   </div>
   <div style="margin-top: 12px; text-align: center;">
     <a href="/btc" style="display: inline-block; font-size: 0.85rem; color: #6b7280; text-decoration: none; border: 1px solid #6b7280; border-radius: 4px; padding: 4px 12px;">BTC Details →</a>
@@ -59,7 +59,7 @@ order by ticker, observation_date
     {row.daily_change >= 0 ? '▲' : '▼'} {(row.daily_change * 100).toFixed(2)}% DoD
   </div>
   <div style="margin-top: 16px;">
-    <AreaChart data={sparkline_data.filter(d => d.ticker === 'ETH')} x=observation_date y=price lineColor=#3b82f6 fillColor=#bfdbfe xAxisLabels=false yAxisLabels=false gridlines=false yGridlines=false height=50 xFmt="dd/mm/yyyy" yScale=true/>
+    <AreaChart data={sparkline_data.filter(d => d.ticker === 'ETH')} x=observation_date y=price lineColor=#3b82f6 fillColor=#bfdbfe xAxisLabels=false yAxisLabels=false yGridlines=false chartAreaHeight=150 xFmt="dd/mm/yyyy" yScale=true/>
   </div>
   <div style="margin-top: 12px; text-align: center;">
     <a href="/eth" style="display: inline-block; font-size: 0.85rem; color: #6b7280; text-decoration: none; border: 1px solid #6b7280; border-radius: 4px; padding: 4px 12px;">ETH Details →</a>
@@ -76,7 +76,7 @@ order by ticker, observation_date
     {row.daily_change >= 0 ? '▲' : '▼'} {(row.daily_change * 100).toFixed(2)}% DoD
   </div>
   <div style="margin-top: 16px;">
-    <AreaChart data={sparkline_data.filter(d => d.ticker === 'Solana')} x=observation_date y=price lineColor=#3b82f6 fillColor=#bfdbfe xAxisLabels=false yAxisLabels=false gridlines=false yGridlines=false height=50 xFmt="dd/mm/yyyy" yScale=true/>
+    <AreaChart data={sparkline_data.filter(d => d.ticker === 'Solana')} x=observation_date y=price lineColor=#3b82f6 fillColor=#bfdbfe xAxisLabels=false yAxisLabels=false yGridlines=false chartAreaHeight=150 xFmt="dd/mm/yyyy" yScale=true/>
   </div>
   <div style="margin-top: 12px; text-align: center;">
     <a href="/solana" style="display: inline-block; font-size: 0.85rem; color: #6b7280; text-decoration: none; border: 1px solid #6b7280; border-radius: 4px; padding: 4px 12px;">Solana Details →</a>
@@ -101,7 +101,7 @@ order by ticker, observation_date
     {row.daily_change >= 0 ? '▲' : '▼'} {(row.daily_change * 100).toFixed(2)}% DoD
   </div>
   <div style="margin-top: 16px;">
-    <AreaChart data={sparkline_data.filter(d => d.ticker === 'S&P 500')} x=observation_date y=price lineColor=#3b82f6 fillColor=#bfdbfe xAxisLabels=false yAxisLabels=false gridlines=false yGridlines=false height=50 xFmt="dd/mm/yyyy" yScale=true/>
+    <AreaChart data={sparkline_data.filter(d => d.ticker === 'S&P 500')} x=observation_date y=price lineColor=#3b82f6 fillColor=#bfdbfe xAxisLabels=false yAxisLabels=false yGridlines=false chartAreaHeight=150 xFmt="dd/mm/yyyy" yScale=true/>
   </div>
   <div style="margin-top: 12px; text-align: center;">
     <a href="/sp500" style="display: inline-block; font-size: 0.85rem; color: #6b7280; text-decoration: none; border: 1px solid #6b7280; border-radius: 4px; padding: 4px 12px;">S&P 500 Details →</a>
@@ -118,7 +118,7 @@ order by ticker, observation_date
     {row.daily_change >= 0 ? '▲' : '▼'} {(row.daily_change * 100).toFixed(2)}% DoD
   </div>
   <div style="margin-top: 16px;">
-    <AreaChart data={sparkline_data.filter(d => d.ticker === 'Nasdaq 100')} x=observation_date y=price lineColor=#3b82f6 fillColor=#bfdbfe xAxisLabels=false yAxisLabels=false gridlines=false yGridlines=false height=50 xFmt="dd/mm/yyyy" yScale=true/>
+    <AreaChart data={sparkline_data.filter(d => d.ticker === 'Nasdaq 100')} x=observation_date y=price lineColor=#3b82f6 fillColor=#bfdbfe xAxisLabels=false yAxisLabels=false yGridlines=false chartAreaHeight=150 xFmt="dd/mm/yyyy" yScale=true/>
   </div>
   <div style="margin-top: 12px; text-align: center;">
     <a href="/nasdaq" style="display: inline-block; font-size: 0.85rem; color: #6b7280; text-decoration: none; border: 1px solid #6b7280; border-radius: 4px; padding: 4px 12px;">Nasdaq 100 Details →</a>
@@ -135,7 +135,7 @@ order by ticker, observation_date
     {row.daily_change >= 0 ? '▲' : '▼'} {(row.daily_change * 100).toFixed(2)}% DoD
   </div>
   <div style="margin-top: 16px;">
-    <AreaChart data={sparkline_data.filter(d => d.ticker === 'FTSE 100')} x=observation_date y=price lineColor=#3b82f6 fillColor=#bfdbfe xAxisLabels=false yAxisLabels=false gridlines=false yGridlines=false height=50 xFmt="dd/mm/yyyy" yScale=true/>
+    <AreaChart data={sparkline_data.filter(d => d.ticker === 'FTSE 100')} x=observation_date y=price lineColor=#3b82f6 fillColor=#bfdbfe xAxisLabels=false yAxisLabels=false yGridlines=false chartAreaHeight=150 xFmt="dd/mm/yyyy" yScale=true/>
   </div>
   <div style="margin-top: 12px; text-align: center;">
     <a href="/ftse" style="display: inline-block; font-size: 0.85rem; color: #6b7280; text-decoration: none; border: 1px solid #6b7280; border-radius: 4px; padding: 4px 12px;">FTSE 100 Details →</a>
@@ -160,7 +160,7 @@ order by ticker, observation_date
     {row.daily_change >= 0 ? '▲' : '▼'} {(row.daily_change * 100).toFixed(2)}% DoD
   </div>
   <div style="margin-top: 16px;">
-    <AreaChart data={sparkline_data.filter(d => d.ticker === 'Gold')} x=observation_date y=price lineColor=#3b82f6 fillColor=#bfdbfe xAxisLabels=false yAxisLabels=false gridlines=false yGridlines=false height=50 xFmt="dd/mm/yyyy" yScale=true/>
+    <AreaChart data={sparkline_data.filter(d => d.ticker === 'Gold')} x=observation_date y=price lineColor=#3b82f6 fillColor=#bfdbfe xAxisLabels=false yAxisLabels=false yGridlines=false chartAreaHeight=150 xFmt="dd/mm/yyyy" yScale=true/>
   </div>
   <div style="margin-top: 12px; text-align: center;">
     <a href="/gold" style="display: inline-block; font-size: 0.85rem; color: #6b7280; text-decoration: none; border: 1px solid #6b7280; border-radius: 4px; padding: 4px 12px;">Gold Details →</a>
@@ -177,7 +177,7 @@ order by ticker, observation_date
     {row.daily_change >= 0 ? '▲' : '▼'} {(row.daily_change * 100).toFixed(2)}% DoD
   </div>
   <div style="margin-top: 16px;">
-    <AreaChart data={sparkline_data.filter(d => d.ticker === 'Silver')} x=observation_date y=price lineColor=#3b82f6 fillColor=#bfdbfe xAxisLabels=false yAxisLabels=false gridlines=false yGridlines=false height=50 xFmt="dd/mm/yyyy" yScale=true/>
+    <AreaChart data={sparkline_data.filter(d => d.ticker === 'Silver')} x=observation_date y=price lineColor=#3b82f6 fillColor=#bfdbfe xAxisLabels=false yAxisLabels=false yGridlines=false chartAreaHeight=150 xFmt="dd/mm/yyyy" yScale=true/>
   </div>
   <div style="margin-top: 12px; text-align: center;">
     <a href="/silver" style="display: inline-block; font-size: 0.85rem; color: #6b7280; text-decoration: none; border: 1px solid #6b7280; border-radius: 4px; padding: 4px 12px;">Silver Details →</a>
@@ -194,7 +194,7 @@ order by ticker, observation_date
     {row.daily_change >= 0 ? '▲' : '▼'} {(row.daily_change * 100).toFixed(2)}% DoD
   </div>
   <div style="margin-top: 16px;">
-    <AreaChart data={sparkline_data.filter(d => d.ticker === 'Copper')} x=observation_date y=price lineColor=#3b82f6 fillColor=#bfdbfe xAxisLabels=false yAxisLabels=false gridlines=false yGridlines=false height=50 xFmt="dd/mm/yyyy" yScale=true/>
+    <AreaChart data={sparkline_data.filter(d => d.ticker === 'Copper')} x=observation_date y=price lineColor=#3b82f6 fillColor=#bfdbfe xAxisLabels=false yAxisLabels=false yGridlines=false chartAreaHeight=150 xFmt="dd/mm/yyyy" yScale=true/>
   </div>
   <div style="margin-top: 12px; text-align: center;">
     <a href="/copper" style="display: inline-block; font-size: 0.85rem; color: #6b7280; text-decoration: none; border: 1px solid #6b7280; border-radius: 4px; padding: 4px 12px;">Copper Details →</a>
