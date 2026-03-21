@@ -12,7 +12,7 @@ Data transformations and financial metrics are built with dbt and executed via G
 
 ## Evidence Dashboard
 Interactive public dashboard built with Evidence.dev, deployed on Netlify.  
-🔗 **[stockterrain.netlify.app](https://stockterrain.netlify.app)**
+🔗 **[stockterrain.vercel.app](https://stockterrain.vercel.app/)**
 
 ![Evidence Main Dashboard](images/StockTerrain-Evidence-Main.png)
 *Main dashboard showing overview of all assets.*
