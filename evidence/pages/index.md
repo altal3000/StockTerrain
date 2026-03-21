@@ -88,7 +88,7 @@ order by ticker, observation_date
 
 </Tab>
 
-<Tab label="Stocks">
+<Tab label="Indices">
 
 <Grid cols=3>
 
@@ -147,7 +147,7 @@ order by ticker, observation_date
 
 </Tab>
 
-<Tab label="Metals">
+<Tab label="Commodities">
 
 <Grid cols=3>
 
