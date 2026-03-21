@@ -1,0 +1,3 @@
+{
+  "buildCommand": "export AWS_ACCESS_KEY_ID=$EVIDENCE_SOURCE__stockterrain__accessKeyId && export AWS_SECRET_ACCESS_KEY=$EVIDENCE_SOURCE__stockterrain__secretAccessKey && npm run sources && npm run build"
+}
