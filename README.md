@@ -39,7 +39,7 @@ Interactive public dashboard built with Evidence.dev, deployed on Netlify.
 - **GitHub Actions**: CI/CD for dbt runs  
 - **Python**: Data ingestion via yfinance
 - **Evidence.dev**: Public-facing analytics app with SQL-driven markdown pages  
-- **Netlify**: Static site hosting and deployment for the Evidence dashboard  
+- **Vercel**: Static site hosting and deployment for the Evidence dashboard  
 - **Preset (Apache Superset)**: Interactive dashboards and visualization
 
 ## Author
