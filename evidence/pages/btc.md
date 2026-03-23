@@ -60,7 +60,7 @@ limit 365
     <Column id=mavg_200 title="MA 200 ($)" fmt=num2/>
 </DataTable>
 
-<div style="display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 24px; align-items: stretch;">
+<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 24px; align-items: stretch;">
 
 <div style="display: flex; flex-direction: column; gap: 16px;">
 
